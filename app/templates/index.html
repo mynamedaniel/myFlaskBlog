@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Daniel's Block{% endblock %}
+
+{% block page_content %}
+<div class='page-header'>
+	<h1>Homepage</h1>
+	<p>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</p>
+	<p>The local date and time is {{ moment(current_time).format('LLL') }}.</p> 
+	<p>That was {{ moment(current_time).fromNow(refresh=True) }}</p>
+	{% if not known %}
+	<p>Pleased to meet you!</p>
+	{% else %}
+	<p>Happy to see you again!</p>
+	{% endif %}
+</div>
+{{ wtf.quick_form(form) }}
+{% endblock %}
